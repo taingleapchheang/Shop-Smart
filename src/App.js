@@ -1,15 +1,17 @@
 import "./App.css";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Header/NavBar";
 import { Container } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Switch, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/views/Home";
 import About from "./components/views/About";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <h1>Welcome to React Router!</h1>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
