@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from "../Assets/logo.jpg";
 
 const defaultSearch = { message: "" };
 const Search = (props) => {
@@ -26,7 +27,7 @@ const Search = (props) => {
           <div className="logo width ">
             <img src={logo} alt="" />
           </div>
-          <div>
+          <div className="search-box search_flex">
             <form onSubmit={getSearchData} className="search-form">
               <input
                 name="message"
@@ -37,7 +38,7 @@ const Search = (props) => {
                 required
                 className="input"
               />
-              <input type="submit" value="🔍" className="icon_search" />
+              <input type="submit" value="🔍" className="icon-search" />
             </form>
           </div>
         </div>

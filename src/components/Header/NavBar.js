@@ -5,46 +5,67 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 
-
-const MainNav = () => (
-  <Nav className="main_nav_bar">
-    <Nav.Link as={RouterNavLink} to="/" exact>
-      Home
-    </Nav.Link>
-    <Nav.Link as={RouterNavLink} to="/products" exact>
-      Products
-    </Nav.Link>
-    <Nav.Link as={RouterNavLink} to="/categories" exact>
-      Categories
-    </Nav.Link>
-    <Nav.Link as={RouterNavLink} to="/offers" exact>
-      Offers
-    </Nav.Link>
-  </Nav>
-);
-
-const AccountNav = () => (
-  <Nav className="account_nav_bar">
-    <Nav.Link as={RouterNavLink} to="/account" exact>
-      Account
-    </Nav.Link>
-  </Nav>
-);
-
-const AuthNav = () => {
-  const { isAuthenticated } = useAuth0();
-  return <Nav> {isAuthenticated ? <LogoutButton /> : <LoginButton />}</Nav>;
-};
-
 const NavBar = () => {
+  const { isAuthenticated } = useAuth0();
   return (
-    <Navbar bg="light" expand="md">
-      <Container>
-        <MainNav />
-        <AuthNav />
-        <AccountNav />
-      </Container>
-    </Navbar>
+    <>
+      <header className="header">
+        <div className="container d_flex">
+          <div className="catgrories d_flex">
+            <span className="fa-solid fa-border-all"></span>
+            <Nav.Link
+              as={RouterNavLink}
+              to="/categories"
+              exact
+              className="fa fa-chevron-down"
+            >
+              Categories
+            </Nav.Link>
+          </div>
+
+          <div className="navlink d_flex">
+            <Nav.Link
+              as={RouterNavLink}
+              to="/"
+              exact
+              className="navlink_components"
+            >
+              Home
+            </Nav.Link>
+
+            <Nav.Link
+              as={RouterNavLink}
+              to="/products"
+              exact
+              className="navlink_components"
+            >
+              Products
+            </Nav.Link>
+
+            <Nav.Link
+              as={RouterNavLink}
+              to="/offers"
+              exact
+              className="navlink_components"
+            >
+              Offers
+            </Nav.Link>
+
+            <Nav.Link
+              as={RouterNavLink}
+              to="/account"
+              exact
+              className="navlink_components"
+            >
+              Account
+            </Nav.Link>
+          </div>
+          <div className="loginLogout">
+            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 
