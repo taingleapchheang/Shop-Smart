@@ -37,6 +37,7 @@ const Search = (props) => {
                 placeholder="search products"
                 required
                 className="input"
+                id="user-input"
               />
               <input type="submit" value="🔍" className="icon-search" />
             </form>

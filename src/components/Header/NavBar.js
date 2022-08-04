@@ -12,15 +12,10 @@ const NavBar = () => {
       <header className="header">
         <div className="container d_flex">
           <div className="catgrories d_flex">
-            <span className="fa-solid fa-border-all"></span>
-            <Nav.Link
-              as={RouterNavLink}
-              to="/categories"
-              exact
-              className="fa fa-chevron-down"
-            >
-              Categories
-            </Nav.Link>
+            <span class="fa-solid fa-border-all"></span>
+            <h4>
+              Categories <i className="fa fa-chevron-down"></i>
+            </h4>
           </div>
 
           <div className="navlink d_flex">

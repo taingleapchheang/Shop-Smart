@@ -1,8 +1,36 @@
 import React from "react";
 import { useState } from "react";
+import Product from "./Product";
 
-const ProductList = ({ products, chosenProduct }) => {
+const ProductList = ({ products, chosenProduct, handleChosenProduct }) => {
   const [sortOption, setSortOption] = useState("byLowToHigh");
+  const productListJSXSortByLowToHigh = products
+    .sort((a, b) => a.price.value - b.price.value)
+    .map((product, index) => (
+      <Product
+        key={index}
+        productId={product["asin"]}
+        image={product["image"]}
+        title={product["title"]}
+        price={product["price"]["raw"]}
+        chosenProduct={chosenProduct}
+        handleChosenProduct={handleChosenProduct}
+      />
+    ));
+
+  const productListJSXSortByHighToLow = products
+    .sort((a, b) => b.price.value - a.price.value)
+    .map((product, index) => (
+      <Product
+        key={index}
+        productId={product["asin"]}
+        image={product["image"]}
+        title={product["title"]}
+        price={product["price"]["raw"]}
+        chosenProduct={chosenProduct}
+        handleChosenProduct={handleChosenProduct}
+      />
+    ));
 
   const updateSortOption = () => {
     const selectElement = document.getElementById("dropDownOptions");
@@ -16,32 +44,6 @@ const ProductList = ({ products, chosenProduct }) => {
     }
   };
 
-  const productListJSXSortByLowToHigh = products
-    .sort((a, b) => b.price - a.price)
-    .map((product) => (
-      <product
-        key={product.asin}
-        productId={product.asin}
-        title={product.details}
-        image={product.url}
-        price={product.price}
-        chosenProduct={chosenProduct}
-      />
-    ));
-
-  const productListJSXSortByHighToLow = products
-    .sort((a, b) => a.price - b.price)
-    .map((product) => (
-      <product
-        key={product.asin}
-        productId={product.asin}
-        title={product.details}
-        image={product.url}
-        price={product.price}
-        chosenProduct={chosenProduct}
-      />
-    ));
-
   return (
     <div>
       <select
@@ -52,6 +54,8 @@ const ProductList = ({ products, chosenProduct }) => {
         <option value="byLowToHigh">Sort by Price: Low to High</option>
         <option value="byHighToLow">Sort by Price: High to Low</option>
       </select>
+      <h4>Search Results</h4>
+      <h5>{products.length} product results</h5>
       <div className="cards-list">{renderProducts()}</div>
     </div>
   );
