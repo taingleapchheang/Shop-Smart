@@ -7,14 +7,15 @@ const Product = ({
   title,
   price,
   chosenProduct,
-  handleChosenProduct
+  handleChosenProduct,
 }) => {
   const getChosenProduct = (event) => {
     event.preventDefault();
     const selectedProduct = {
-      title: { title },
-      image: { image },
-      price: { price },
+      title: title,
+      image: image,
+      price: price,
+      asin: productId,
     };
     handleChosenProduct(selectedProduct);
   };

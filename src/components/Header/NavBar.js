@@ -39,6 +39,14 @@ const NavBar = () => {
 
             <Nav.Link
               as={RouterNavLink}
+              to="/discover"
+              exact
+              className="navlink_components"
+            >
+              Discover
+            </Nav.Link>
+            <Nav.Link
+              as={RouterNavLink}
               to="/offers"
               exact
               className="navlink_components"

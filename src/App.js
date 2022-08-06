@@ -2,20 +2,26 @@ import "./App.css";
 import { Container } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
-import { Switch, Routes, Route, Link } from "react-router-dom";
-import About from "./components/views/About";
+import { BrowserRouter as Switch, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import ProductList from "./components/ProductList";
-import SearchResultPage from "./components/views/SearchResultPage";
 import OfficialPage from "./components/views/OfficialPage";
+import ProductPage from "./components/views/ProductPage";
+import Discover from "./components/views/DiscoverPage";
 import SampleData from "./components/SampleData";
+import SampleOfferData from "./components/SampleOfferData";
 
-const defaultChosenProduct = { title: null, image: null, price: null };
+const defaultChosenProduct = {
+  title: null,
+  image: null,
+  price: null,
+  asin: null,
+};
 
 function App() {
   const [products, setProducts] = useState(SampleData);
   const [chosenProduct, setChosenProduct] = useState(defaultChosenProduct);
+  const [chosenProductOffers, setChosenProductOffers] = useState(SampleOfferData);
 
   const getSearchDataFromAPI = (data) => {
     // axios
@@ -30,6 +36,19 @@ function App() {
     //   .catch((error) => console.log(`Cannot get the data ${error}`));
   };
 
+  const getOfferResultFromAPI = (data) => {
+    // axios
+    //   .get(`http://localhost:5000/offers/${data}`)
+    //   .then((response) => {
+    //     console.log("Inside getOfferResultFromAPI Function");
+    //     const offers = response.data;
+    //     console.log(data);
+    //     setChosenProductOffer(offers);
+    //     console.log(offers);
+    //   })
+    //   .catch((error) => console.log(`Cannot get the data ${error}`));
+  };
+
   const handleChosenProduct = (product) => {
     setChosenProduct(product);
   };
@@ -37,17 +56,25 @@ function App() {
   return (
     <div className="App">
       <Header getSearchDataFromAPI={getSearchDataFromAPI} />
-      {/* <main>
+      <main>
         <Routes>
           <Route path="/" element={<OfficialPage />} />
-          <Route path="products" element={<SearchResultPage />} />
+          <Route
+            path="/products"
+            element={
+              <ProductPage
+                products={products}
+                chosenProduct={chosenProduct}
+                handleChosenProduct={handleChosenProduct}
+              />
+            }
+          />
+          <Route
+            path="/discover"
+            element={<Discover chosenProduct={chosenProduct} chosenProductOffers={chosenProductOffers} getOfferResultFromAPI={getOfferResultFromAPI}/>}
+          />
         </Routes>
-      </main> */}
-      <ProductList
-        products={products}
-        chosenProduct={chosenProduct}
-        handleChosenProduct={handleChosenProduct}
-      />
+      </main>
       <Footer />
     </div>
   );
