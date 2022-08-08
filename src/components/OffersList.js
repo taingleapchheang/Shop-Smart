@@ -1,6 +1,7 @@
 import React from "react";
 import Offer from "./Offer";
 import { useState } from "react";
+import {Nav} from "react-bootstrap";
 
 const OffersList = ({ chosenProductOffers }) => {
   const [sortOfferOption, setSortOfferOption] = useState("byLowToHigh");
@@ -50,6 +51,14 @@ const OffersList = ({ chosenProductOffers }) => {
         <option value="byHighToLow">Sort by Price: High to Low</option>
       </select>
       <h4> {chosenProductOffers.length} Offers</h4>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">PRODUCT CONDITION</li>
+          <li class="nav-item">PRICE</li>
+          <li class="nav-item">DELIVERY</li>
+          <li class="nav-item">LINK</li>
+        </ul>
+      </div>
       <div className="offers-list">{renderProducts()}</div>
     </div>
   );

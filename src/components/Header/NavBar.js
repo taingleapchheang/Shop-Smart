@@ -47,20 +47,19 @@ const NavBar = () => {
             </Nav.Link>
             <Nav.Link
               as={RouterNavLink}
-              to="/offers"
-              exact
-              className="navlink_components"
-            >
-              Offers
-            </Nav.Link>
-
-            <Nav.Link
-              as={RouterNavLink}
               to="/account"
               exact
               className="navlink_components"
             >
               Account
+            </Nav.Link>
+            <Nav.Link
+              as={RouterNavLink}
+              to="/about"
+              exact
+              className="navlink_components"
+            >
+              About
             </Nav.Link>
           </div>
           <div className="loginLogout">

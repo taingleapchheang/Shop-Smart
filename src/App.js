@@ -1,12 +1,14 @@
 import "./App.css";
 import { Container } from "react-bootstrap";
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { BrowserRouter as Switch, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import OfficialPage from "./components/views/OfficialPage";
 import ProductPage from "./components/views/ProductPage";
+import AccountPage from "./components/views/AccountPage";
 import Discover from "./components/views/DiscoverPage";
 import SampleData from "./components/SampleData";
 import SampleOfferData from "./components/SampleOfferData";
@@ -21,7 +23,10 @@ const defaultChosenProduct = {
 function App() {
   const [products, setProducts] = useState(SampleData);
   const [chosenProduct, setChosenProduct] = useState(defaultChosenProduct);
-  const [chosenProductOffers, setChosenProductOffers] = useState(SampleOfferData);
+  const [chosenProductOffers, setChosenProductOffers] =
+    useState(SampleOfferData);
+
+  const [userInfo, setUserInfo] = useState({});
 
   const getSearchDataFromAPI = (data) => {
     // axios
@@ -53,6 +58,8 @@ function App() {
     setChosenProduct(product);
   };
 
+  const saveProductToWatchlist = () => {};
+
   return (
     <div className="App">
       <Header getSearchDataFromAPI={getSearchDataFromAPI} />
@@ -71,7 +78,17 @@ function App() {
           />
           <Route
             path="/discover"
-            element={<Discover chosenProduct={chosenProduct} chosenProductOffers={chosenProductOffers} getOfferResultFromAPI={getOfferResultFromAPI}/>}
+            element={
+              <Discover
+                chosenProduct={chosenProduct}
+                chosenProductOffers={chosenProductOffers}
+                getOfferResultFromAPI={getOfferResultFromAPI} saveProductToWatchlist={saveProductToWatchlist}
+              />
+            }
+          />
+          <Route
+            path="/account"
+            element={<AccountPage userInfo={userInfo} />}
           />
         </Routes>
       </main>

@@ -4,7 +4,7 @@ const Offer = ({ price, condition, delivery, url }) => {
   return (
     <>
       <div>
-        <h4 className="_title">{condition}</h4>
+        <h5 className="_title">{condition}</h5>
       </div>
       <div>
         <h5 className="offer_price">{price}</h5>
