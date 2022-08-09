@@ -17,6 +17,7 @@ const defaultChosenProduct = {
   title: null,
   image: null,
   price: null,
+  url: null,
   asin: null,
 };
 
@@ -58,7 +59,16 @@ function App() {
     setChosenProduct(product);
   };
 
-  const saveProductToWatchlist = () => {};
+  const saveProductToWatchlist = (data) => {
+    axios
+      .post(`http://localhost:5000/watchlist`, data)
+      .then(() => {
+        console.log("This product has been added to our watchlist");
+      })
+      .catch((error) => {
+        console.log(`Unable to add product to watchlist  ${error}`);
+      });
+  };
 
   return (
     <div className="App">
@@ -82,7 +92,8 @@ function App() {
               <Discover
                 chosenProduct={chosenProduct}
                 chosenProductOffers={chosenProductOffers}
-                getOfferResultFromAPI={getOfferResultFromAPI} saveProductToWatchlist={saveProductToWatchlist}
+                getOfferResultFromAPI={getOfferResultFromAPI}
+                saveProductToWatchlist={saveProductToWatchlist}
               />
             }
           />

@@ -1,6 +1,14 @@
 import React from "react";
 import OffersList from "../OffersList";
-import SelectedProduct from "../SelectedProduct";
+import { useState } from "react";
+
+const defaultProductToBeAdded = {
+  asin: null,
+  product: null,
+  price: null,
+  url: null,
+  users: null,
+};
 
 const Discover = ({
   chosenProduct,
@@ -12,8 +20,21 @@ const Discover = ({
     getOfferResultFromAPI(chosenProduct.asin);
   }
 
+  const [productToBeAdded, setProductToBeAdded] = useState(
+    defaultProductToBeAdded
+  );
+
   const handleProductWatch = () => {
-    saveProductToWatchlist();
+    const user_email = document.getElementById("user-email");
+    const product = {
+      asin: chosenProduct.asin,
+      product: chosenProduct.title,
+      price: chosenProduct.price,
+      url: chosenProduct.url,
+      users: user_email,
+    };
+    saveProductToWatchlist(product);
+    alert("This product has been added to our watchlist");
   };
   return (
     chosenProduct.title && (
