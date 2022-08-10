@@ -1,27 +1,27 @@
 import React from "react";
 import OffersList from "../OffersList";
-import { useState } from "react";
 
 const Discover = ({
   chosenProduct,
   chosenProductOffers,
   getOfferResultFromAPI,
   saveProductToWatchlist,
+  userInfo,
 }) => {
   if (chosenProduct.asin) {
     getOfferResultFromAPI(chosenProduct.asin);
   }
 
   const handleProductWatch = () => {
-    const user_email = document.getElementById("user-email");
     const product = {
       asin: chosenProduct.asin,
       product: chosenProduct.title,
       price: chosenProduct.value,
       url: chosenProduct.url,
-      users: user_email,
+      users: [userInfo.email],
     };
     saveProductToWatchlist(product);
+    console.log(product);
     alert("This product has been added to our watchlist");
   };
   return (

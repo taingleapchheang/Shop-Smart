@@ -4,7 +4,7 @@ import JSONPretty from "react-json-pretty";
 
 const Profile = ({ userInfo }) => {
   const { user, isAuthenticated } = useAuth0();
-
+  userInfo.email = user.email;
   return (
     isAuthenticated && (
       <div>

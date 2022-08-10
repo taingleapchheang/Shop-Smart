@@ -22,13 +22,15 @@ const defaultChosenProduct = {
   asin: null,
 };
 
+const defaultUserEmail = { email: null };
+
 function App() {
   const [products, setProducts] = useState(SampleData);
   const [chosenProduct, setChosenProduct] = useState(defaultChosenProduct);
   const [chosenProductOffers, setChosenProductOffers] =
     useState(SampleOfferData);
 
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState(defaultUserEmail);
 
   const getSearchDataFromAPI = (data) => {
     // axios
@@ -60,40 +62,15 @@ function App() {
     setChosenProduct(product);
   };
 
-  const addNewItemToWatchList = (data) => {
+  const saveProductToWatchlist = (data) => {
     axios
       .post("http://localhost:5000/watchlist", data)
       .then((response) => {
         console.log("Successfully added the item to our watchlist");
+        console.log(response);
       })
       .catch((error) => {
-        console.log(`Unable to add a new board  ${error}`);
-      });
-  };
-
-  const addNewUserToExistingWatchList = (data) => {
-    axios
-      .put(`http://localhost:5000/watchlist/${data.asin}`, {
-        users: data.users,
-      })
-      .then((response) => {
-        console.log(`Succesfully added user to watchlist`);
-      })
-      .catch((error) => {
-        console.log(`Cannot add user to watchlist ${error}`);
-      });
-  };
-
-  const saveProductToWatchlist = (data) => {
-    axios
-      .get(`http://localhost:5000/watchlist/${data.asin}`)
-      .then((response) => {
-        console.log("This product has been added to our watchlist");
-        addNewUserToExistingWatchList(data);
-      })
-      .catch((error) => {
-        console.log("This product has been added to our watchlist");
-        addNewItemToWatchList(data);
+        console.log(`Unable to add item to watchlist ${error}`);
       });
   };
 
@@ -121,6 +98,7 @@ function App() {
                 chosenProductOffers={chosenProductOffers}
                 getOfferResultFromAPI={getOfferResultFromAPI}
                 saveProductToWatchlist={saveProductToWatchlist}
+                userInfo={userInfo}
               />
             }
           />
