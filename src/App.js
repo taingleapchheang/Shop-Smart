@@ -17,6 +17,7 @@ const defaultChosenProduct = {
   title: null,
   image: null,
   price: null,
+  value: null,
   url: null,
   asin: null,
 };
@@ -59,14 +60,40 @@ function App() {
     setChosenProduct(product);
   };
 
-  const saveProductToWatchlist = (data) => {
+  const addNewItemToWatchList = (data) => {
     axios
-      .post(`http://localhost:5000/watchlist`, data)
-      .then(() => {
-        console.log("This product has been added to our watchlist");
+      .post("http://localhost:5000/watchlist", data)
+      .then((response) => {
+        console.log("Successfully added the item to our watchlist");
       })
       .catch((error) => {
-        console.log(`Unable to add product to watchlist  ${error}`);
+        console.log(`Unable to add a new board  ${error}`);
+      });
+  };
+
+  const addNewUserToExistingWatchList = (data) => {
+    axios
+      .put(`http://localhost:5000/watchlist/${data.asin}`, {
+        users: data.users,
+      })
+      .then((response) => {
+        console.log(`Succesfully added user to watchlist`);
+      })
+      .catch((error) => {
+        console.log(`Cannot add user to watchlist ${error}`);
+      });
+  };
+
+  const saveProductToWatchlist = (data) => {
+    axios
+      .get(`http://localhost:5000/watchlist/${data.asin}`)
+      .then((response) => {
+        console.log("This product has been added to our watchlist");
+        addNewUserToExistingWatchList(data);
+      })
+      .catch((error) => {
+        console.log("This product has been added to our watchlist");
+        addNewItemToWatchList(data);
       });
   };
 

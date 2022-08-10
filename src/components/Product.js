@@ -5,6 +5,7 @@ const Product = ({
   productId,
   image,
   title,
+  value,
   price,
   link,
   chosenProduct,
@@ -16,8 +17,9 @@ const Product = ({
       title: title,
       image: image,
       price: price,
-      asin: productId,
+      value: value,
       url: link,
+      asin: productId,
     };
     handleChosenProduct(selectedProduct);
   };

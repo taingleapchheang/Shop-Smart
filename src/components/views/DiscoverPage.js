@@ -2,14 +2,6 @@ import React from "react";
 import OffersList from "../OffersList";
 import { useState } from "react";
 
-const defaultProductToBeAdded = {
-  asin: null,
-  product: null,
-  price: null,
-  url: null,
-  users: null,
-};
-
 const Discover = ({
   chosenProduct,
   chosenProductOffers,
@@ -20,16 +12,12 @@ const Discover = ({
     getOfferResultFromAPI(chosenProduct.asin);
   }
 
-  const [productToBeAdded, setProductToBeAdded] = useState(
-    defaultProductToBeAdded
-  );
-
   const handleProductWatch = () => {
     const user_email = document.getElementById("user-email");
     const product = {
       asin: chosenProduct.asin,
       product: chosenProduct.title,
-      price: chosenProduct.price,
+      price: chosenProduct.value,
       url: chosenProduct.url,
       users: user_email,
     };

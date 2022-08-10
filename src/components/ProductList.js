@@ -12,6 +12,7 @@ const ProductList = ({ products, chosenProduct, handleChosenProduct }) => {
         productId={product["asin"]}
         image={product["image"]}
         title={product["title"]}
+        value = {product["price"]["value"]}
         price={product["price"]["raw"]}
         url={product["link"]}
         chosenProduct={chosenProduct}
@@ -27,6 +28,7 @@ const ProductList = ({ products, chosenProduct, handleChosenProduct }) => {
         productId={product["asin"]}
         image={product["image"]}
         title={product["title"]}
+        value = {product["price"]["value"]}
         price={product["price"]["raw"]}
         url={product["link"]}
         chosenProduct={chosenProduct}
