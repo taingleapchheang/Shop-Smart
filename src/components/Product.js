@@ -1,5 +1,7 @@
 import React from "react";
 import "./Product.css";
+import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
 
 const Product = ({
   productId,
@@ -11,6 +13,8 @@ const Product = ({
   chosenProduct,
   handleChosenProduct,
 }) => {
+  const navigate = useNavigate();
+
   const getChosenProduct = (event) => {
     event.preventDefault();
     const selectedProduct = {
@@ -22,22 +26,19 @@ const Product = ({
       asin: productId,
     };
     handleChosenProduct(selectedProduct);
+    navigate("/discover");
   };
   return (
     <>
-      <div className="product_display">
-        <img
-          alt=""
-          src={image}
-          className="product_image"
-          onClick={getChosenProduct}
-        />
+      <div class="card">
+        <img alt="" src={image} class="card-img-top" />
       </div>
       <div>
-        <h4 className="product_title">{title}</h4>
-      </div>
-      <div>
-        <h5 className="product_price">{price}</h5>
+        <h4 class="card-title">{title}</h4>
+        <h5 class="card-text">{price}</h5>
+        <a href="#" class="btn btn-primary" onClick={getChosenProduct}>
+          Discover this product
+        </a>
       </div>
     </>
   );

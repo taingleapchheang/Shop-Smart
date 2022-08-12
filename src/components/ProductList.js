@@ -2,7 +2,12 @@ import React from "react";
 import { useState } from "react";
 import Product from "./Product";
 
-const ProductList = ({ products, chosenProduct, handleChosenProduct }) => {
+const ProductList = ({
+  products,
+  chosenProduct,
+  handleChosenProduct,
+  searchInput,
+}) => {
   const [sortOption, setSortOption] = useState("byLowToHigh");
   const productListJSXSortByLowToHigh = products
     .sort((a, b) => a.price.value - b.price.value)
@@ -12,7 +17,7 @@ const ProductList = ({ products, chosenProduct, handleChosenProduct }) => {
         productId={product["asin"]}
         image={product["image"]}
         title={product["title"]}
-        value = {product["price"]["value"]}
+        value={product["price"]["value"]}
         price={product["price"]["raw"]}
         url={product["link"]}
         chosenProduct={chosenProduct}
@@ -28,7 +33,7 @@ const ProductList = ({ products, chosenProduct, handleChosenProduct }) => {
         productId={product["asin"]}
         image={product["image"]}
         title={product["title"]}
-        value = {product["price"]["value"]}
+        value={product["price"]["value"]}
         price={product["price"]["raw"]}
         url={product["link"]}
         chosenProduct={chosenProduct}
@@ -49,19 +54,21 @@ const ProductList = ({ products, chosenProduct, handleChosenProduct }) => {
   };
 
   return (
-    <div>
-      <select
-        className="selector"
-        id="dropDownOptions"
-        onChange={updateSortOption}
-      >
-        <option value="byLowToHigh">Sort by Price: Low to High</option>
-        <option value="byHighToLow">Sort by Price: High to Low</option>
-      </select>
-      <h4>Search Results</h4>
-      <h5>{products.length} product results</h5>
-      <div className="cards-list">{renderProducts()}</div>
-    </div>
+    products.length !== 0 && (
+      <div>
+        <select
+          className="selector"
+          id="dropDownOptions"
+          onChange={updateSortOption}
+        >
+          <option value="byLowToHigh">Sort by Price: Low to High</option>
+          <option value="byHighToLow">Sort by Price: High to Low</option>
+        </select>
+        <h4>Search Results for {searchInput}</h4>
+        <h5>{products.length} product results</h5>
+        <div className="cards-list">{renderProducts()}</div>
+      </div>
+    )
   );
 };
 

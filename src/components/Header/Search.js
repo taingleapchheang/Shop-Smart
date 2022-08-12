@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import logo from "../Assets/logo.jpg";
+import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
 
 const defaultSearch = { message: "" };
 const Search = (props) => {
   const [search, setSearch] = useState(defaultSearch);
+  const navigate = useNavigate();
 
   const handleUserInput = (event) => {
     console.log("Inside handleUserInput function");
@@ -19,31 +22,35 @@ const Search = (props) => {
   const getSearchData = (event) => {
     event.preventDefault();
     props.getSearchDataFromAPI(search.message);
+    navigate("/products");
   };
   return (
     <>
-      <section className="search">
-        <div className="container c_flex">
-          <div className="logo width ">
-            <img src={logo} alt="" />
-          </div>
-          <div className="search-box search_flex">
-            <form onSubmit={getSearchData} className="search-form">
-              <input
-                name="message"
-                type="text"
-                value={search.message}
-                onChange={handleUserInput}
-                placeholder="search products"
-                required
-                className="input"
-                id="user-input"
-              />
-              <input type="submit" value="🔍" className="icon-search" />
-            </form>
-          </div>
-        </div>
-      </section>
+      <nav class="nav-bar navbar-light bg-light justify-content-between">
+        <img
+          src={logo}
+          class="d-inline-block align-top img"
+          width="30"
+          height="30"
+          alt=""
+        />
+        <form onSubmit={getSearchData} class="form-inline my-2 my-lg-0">
+          <input
+            name="message"
+            type="search"
+            value={search.message}
+            onChange={handleUserInput}
+            placeholder="search products"
+            required
+            class="form-control mr-sm-2"
+            aria-label="Search"
+            id="user-input"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </nav>
     </>
   );
 };

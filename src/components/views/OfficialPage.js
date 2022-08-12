@@ -7,7 +7,7 @@ const OfficialPage = () => {
   return (
     <div className="official-page">
       <Home />
-      <img src={sale3} alt="" className="sale-logo"/>
+      {/* <img src={sale3} alt="" className="sale-logo"/> */}
     </div>
   );
 };

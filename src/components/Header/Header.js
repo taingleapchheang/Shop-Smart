@@ -4,12 +4,18 @@ import "./Header.css";
 import Search from "./Search";
 import NavBar from "./NavBar";
 
-const Header = (props) => {
+const Header = ({ getSearchDataFromAPI, searchInput }) => {
   return (
     <>
       <Head />
-      <Search getSearchDataFromAPI={props.getSearchDataFromAPI} />
-      <NavBar />
+      <Search
+        getSearchDataFromAPI={getSearchDataFromAPI}
+        searchInput={searchInput}
+      />
+      <NavBar
+        getSearchDataFromAPI={getSearchDataFromAPI}
+        searchInput={searchInput}
+      />
     </>
   );
 };

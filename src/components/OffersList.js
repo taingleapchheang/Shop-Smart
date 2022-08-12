@@ -1,7 +1,7 @@
 import React from "react";
 import Offer from "./Offer";
 import { useState } from "react";
-import {Nav} from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 
 const OffersList = ({ chosenProductOffers }) => {
   const [sortOfferOption, setSortOfferOption] = useState("byLowToHigh");
@@ -41,26 +41,28 @@ const OffersList = ({ chosenProductOffers }) => {
   };
 
   return (
-    <div>
-      <select
-        className="selector"
-        id="dropDownOptions"
-        onChange={updateSortOfferOption}
-      >
-        <option value="byLowToHigh">Sort by Price: Low to High</option>
-        <option value="byHighToLow">Sort by Price: High to Low</option>
-      </select>
-      <h4> {chosenProductOffers.length} Offers</h4>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">PRODUCT CONDITION</li>
-          <li class="nav-item">PRICE</li>
-          <li class="nav-item">DELIVERY</li>
-          <li class="nav-item">LINK</li>
-        </ul>
+    chosenProductOffers.length !== 0 && (
+      <div>
+        <select
+          className="selector"
+          id="dropDownOptions"
+          onChange={updateSortOfferOption}
+        >
+          <option value="byLowToHigh">Sort by Price: Low to High</option>
+          <option value="byHighToLow">Sort by Price: High to Low</option>
+        </select>
+        <h4> {chosenProductOffers.length} Offers</h4>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">PRODUCT CONDITION</li>
+            <li class="nav-item">PRICE</li>
+            <li class="nav-item">DELIVERY</li>
+            <li class="nav-item">LINK</li>
+          </ul>
+        </div>
+        <div className="offers-list">{renderProducts()}</div>
       </div>
-      <div className="offers-list">{renderProducts()}</div>
-    </div>
+    )
   );
 };
 

@@ -1,16 +1,28 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
 
 const Head = () => {
   return (
     <>
       <section className="head">
-        <div className="container d_flex">
-          <i className="fa fa-envelope"></i>
-          <label>📧support@shopsmart.com</label>
-          <label>Theme FAQ's</label>
-          <label>Need Help?</label>
-          <label>🇬🇧EN</label>
-          <label>🇺🇸USD</label>
+        <div>
+          <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+              <a class="nav-link">📧support@shopsmart.com</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Theme FAQ's</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Need Help?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">🇬🇧EN</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">🇺🇸USD</a>
+            </li>
+          </ul>
         </div>
       </section>
     </>

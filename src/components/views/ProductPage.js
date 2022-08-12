@@ -1,16 +1,16 @@
 import React from "react";
 import ProductList from "../ProductList";
 
-const ProductPage = ({ products, chosenProduct, handleChosenProduct }) => {
+const ProductPage = ({ products, chosenProduct, handleChosenProduct, searchInput }) => {
   return (
-    <div className="product-page">
-      <h4> Inside ProductPage</h4>
-      <ProductList
-        products={products}
-        chosenProduct={chosenProduct}
-        handleChosenProduct={handleChosenProduct}
-      />
-    </div>
+      <div className="product-page">
+        <ProductList
+          products={products}
+          chosenProduct={chosenProduct}
+          handleChosenProduct={handleChosenProduct}
+          searchInput={searchInput}
+        />
+      </div>
   );
 };
 

@@ -25,37 +25,40 @@ const defaultChosenProduct = {
 const defaultUserEmail = { email: null };
 
 function App() {
-  const [products, setProducts] = useState(SampleData);
+  const [products, setProducts] = useState([]);
+  const [chosenProductOffers, setChosenProductOffers] = useState([]);
   const [chosenProduct, setChosenProduct] = useState(defaultChosenProduct);
-  const [chosenProductOffers, setChosenProductOffers] =
-    useState(SampleOfferData);
-
   const [userInfo, setUserInfo] = useState(defaultUserEmail);
+  const [searchInput, setSearchInput] = useState("");
+  const {isAuthenticated } = useAuth0();
 
   const getSearchDataFromAPI = (data) => {
-    // axios
-    //   .get(`http://localhost:5000/${data}`)
-    //   .then((response) => {
-    //     console.log("Inside getSearchDataFromAPI Function");
-    //     const newProducts = response.data;
-    //     console.log(data);
-    //     setProducts(newProducts);
-    //     console.log(newProducts);
-    //   })
-    //   .catch((error) => console.log(`Cannot get the data ${error}`));
+    if (data) {
+      axios
+        .get(`http://localhost:5000/${data}`)
+        .then((response) => {
+          console.log("Inside getSearchDataFromAPI Function");
+          const newProducts = response.data;
+          setProducts(newProducts);
+          setSearchInput(data);
+          console.log(newProducts);
+        })
+        .catch((error) => console.log(`Cannot get the data ${error}`));
+    }
   };
 
   const getOfferResultFromAPI = (data) => {
-    // axios
-    //   .get(`http://localhost:5000/offers/${data}`)
-    //   .then((response) => {
-    //     console.log("Inside getOfferResultFromAPI Function");
-    //     const offers = response.data;
-    //     console.log(data);
-    //     setChosenProductOffer(offers);
-    //     console.log(offers);
-    //   })
-    //   .catch((error) => console.log(`Cannot get the data ${error}`));
+    if (data) {
+      axios
+        .get(`http://localhost:5000/offers/${data}`)
+        .then((response) => {
+          console.log("Inside getOfferResultFromAPI Function");
+          const offers = response.data;
+          setChosenProductOffers(offers);
+          console.log(offers);
+        })
+        .catch((error) => console.log(`Cannot get the data ${error}`));
+    }
   };
 
   const handleChosenProduct = (product) => {
@@ -63,20 +66,25 @@ function App() {
   };
 
   const saveProductToWatchlist = (data) => {
-    axios
-      .post("http://localhost:5000/watchlist", data)
-      .then((response) => {
-        console.log("Successfully added the item to our watchlist");
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(`Unable to add item to watchlist ${error}`);
-      });
+    if (data) {
+      axios
+        .post("http://localhost:5000/watchlist", data)
+        .then((response) => {
+          console.log("Successfully added the item to our watchlist");
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(`Unable to add item to watchlist ${error}`);
+        });
+    }
   };
 
   return (
     <div className="App">
-      <Header getSearchDataFromAPI={getSearchDataFromAPI} />
+      <Header
+        getSearchDataFromAPI={getSearchDataFromAPI}
+        searchInput={searchInput}
+      />
       <main>
         <Routes>
           <Route path="/" element={<OfficialPage />} />
@@ -87,6 +95,7 @@ function App() {
                 products={products}
                 chosenProduct={chosenProduct}
                 handleChosenProduct={handleChosenProduct}
+                searchInput={searchInput}
               />
             }
           />
@@ -102,10 +111,12 @@ function App() {
               />
             }
           />
-          <Route
-            path="/account"
-            element={<AccountPage userInfo={userInfo} />}
-          />
+          {isAuthenticated && (
+            <Route
+              path="/account"
+              element={<AccountPage userInfo={userInfo} />}
+            />
+          )}
         </Routes>
       </main>
       <Footer />

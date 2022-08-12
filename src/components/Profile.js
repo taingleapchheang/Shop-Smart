@@ -1,17 +1,32 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import JSONPretty from "react-json-pretty";
+import { useNavigate } from "react-router-dom";
 
 const Profile = ({ userInfo }) => {
   const { user, isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
+  if (isAuthenticated === true) {
+    navigate("/account");
+  }
   userInfo.email = user.email;
   return (
     isAuthenticated && (
       <div>
-        <img src={user.picture} alt={user.name} />
-        <h2>Hi {user.given_name}</h2>
-        <p id="user-email">{user.email}</p>
-        <JSONPretty data={user} id="user-details" />
+        <h2>
+          <strong> Hi {user.given_name} </strong>
+        </h2>
+        <h3> Welcome to ShopSmart Website !</h3>
+        <p>
+          A place where you can explore great deals even if it is not
+          BlackFriday.
+        </p>
+        <p id="user-email">
+          To allow us to watch the price for you, please click "Watch Price For
+          This Product" Button on Discover Page. And we will send the price
+          update to your email: {user.email}
+        </p>
+        {/* <JSONPretty data={user} id="user-details" /> */}
       </div>
     )
   );

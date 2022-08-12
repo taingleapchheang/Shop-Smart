@@ -1,5 +1,4 @@
 import React from "react";
-import Categories from "./Categories";
 import "./Home.css";
 
 const Home = () => {
@@ -7,7 +6,6 @@ const Home = () => {
     <>
       <section className="home">
         <div className="container d_flex">
-          <Categories />
         </div>
       </section>
     </>

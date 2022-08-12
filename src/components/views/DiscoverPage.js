@@ -1,5 +1,6 @@
 import React from "react";
 import OffersList from "../OffersList";
+import { useNavigate } from "react-router-dom";
 
 const Discover = ({
   chosenProduct,
@@ -8,27 +9,39 @@ const Discover = ({
   saveProductToWatchlist,
   userInfo,
 }) => {
-  if (chosenProduct.asin) {
-    getOfferResultFromAPI(chosenProduct.asin);
-  }
+  const navigate = useNavigate();
 
   const handleProductWatch = () => {
-    const product = {
-      asin: chosenProduct.asin,
-      product: chosenProduct.title,
-      price: chosenProduct.value,
-      url: chosenProduct.url,
-      users: [userInfo.email],
-    };
-    saveProductToWatchlist(product);
-    console.log(product);
-    alert("This product has been added to our watchlist");
+    if (userInfo.email === null) {
+      alert("You must log in to do the price watchlist");
+      navigate("/account");
+    } else {
+      const product = {
+        asin: chosenProduct.asin,
+        product: chosenProduct.title,
+        price: chosenProduct.value,
+        url: chosenProduct.url,
+        users: [userInfo.email],
+      };
+      saveProductToWatchlist(product);
+      console.log(product);
+      alert("This product has been added to our watchlist");
+    }
+  };
+
+  const handleProductOffers = () => {
+    getOfferResultFromAPI(chosenProduct.asin);
   };
   return (
     chosenProduct.title && (
       <>
         <h5 className="chosenProduct_title">{chosenProduct.title}</h5>
-        <button title="Solid" onClick={handleProductWatch}>
+        <button
+          type="button"
+          class="btn btn-success"
+          title="Solid"
+          onClick={handleProductWatch}
+        >
           Watch Price For This Product
         </button>
         <div className="chosenProduct_display">
@@ -39,6 +52,13 @@ const Discover = ({
           />
         </div>
         <h6 className="chosenProduct_price">{chosenProduct.price}</h6>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          onClick={handleProductOffers}
+        >
+          Check Other Offers
+        </button>
         <OffersList chosenProductOffers={chosenProductOffers} />
       </>
     )
