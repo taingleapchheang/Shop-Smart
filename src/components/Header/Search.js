@@ -25,15 +25,11 @@ const Search = (props) => {
     navigate("/products");
   };
   return (
-    <>
-      <nav class="nav-bar navbar-light bg-light justify-content-between">
-        <img
-          src={logo}
-          class="d-inline-block align-top img"
-          width="30"
-          height="30"
-          alt=""
-        />
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <img src={logo} class="d-inline-block align-top img" alt="" />
+      </li>
+      <li class="nav-item">
         <form onSubmit={getSearchData} class="form-inline my-2 my-lg-0">
           <input
             name="message"
@@ -42,7 +38,7 @@ const Search = (props) => {
             onChange={handleUserInput}
             placeholder="search products"
             required
-            class="form-control mr-sm-2"
+            class="form-control mr-sm-2 me-2"
             aria-label="Search"
             id="user-input"
           />
@@ -50,9 +46,30 @@ const Search = (props) => {
             Search
           </button>
         </form>
-      </nav>
-    </>
+      </li>
+    </ul>
   );
 };
 
 export default Search;
+//<>
+// <nav class="nav-bar navbar-light bg-light justify-content-between">
+// <img src={logo} class="d-inline-block align-top img" alt="" />
+// <form onSubmit={getSearchData} class="form-inline my-2 my-lg-0">
+//   <input
+//     name="message"
+//     type="search"
+//     value={search.message}
+//     onChange={handleUserInput}
+//     placeholder="search products"
+//     required
+//     class="form-control mr-sm-2 me-2"
+//     aria-label="Search"
+//     id="user-input"
+//   />
+//   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+//     Search
+//   </button>
+// </form>
+// </nav>
+// </>

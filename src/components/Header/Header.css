@@ -6,29 +6,29 @@
   }
 
 .nav-link {
-  color: #c9d5e5;
+  color:#5e9df2;
 }
 
   /*------head-----------*/
   /*------search-----------*/
 
 .nav-bar {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 10px 10px
 }
 .img {
+  display: flex;
     margin-top: 15px;
     margin-bottom: 15px;
-    width: 10%;
-    height: 10%;
-    min-height: 125px;
+    width: 100px;
+    height: 100px;
     background-blend-mode: multiply;
     background-color: #fff;
     transition: all 0.3s 0s ease;
     padding: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 form {

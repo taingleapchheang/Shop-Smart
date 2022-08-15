@@ -36,9 +36,14 @@ const Product = ({
       <div>
         <h4 class="card-title">{title}</h4>
         <h5 class="card-text">{price}</h5>
-        <a href="#" class="btn btn-primary" onClick={getChosenProduct}>
+        <button
+          button
+          type="button"
+          class="btn btn-success"
+          onClick={getChosenProduct}
+        >
           Discover this product
-        </a>
+        </button>
       </div>
     </>
   );

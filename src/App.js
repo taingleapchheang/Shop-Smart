@@ -1,5 +1,4 @@
 import "./App.css";
-import { Container } from "react-bootstrap";
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
@@ -30,18 +29,19 @@ function App() {
   const [chosenProduct, setChosenProduct] = useState(defaultChosenProduct);
   const [userInfo, setUserInfo] = useState(defaultUserEmail);
   const [searchInput, setSearchInput] = useState("");
-  const {isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   const getSearchDataFromAPI = (data) => {
     if (data) {
       axios
-        .get(`http://localhost:5000/${data}`)
+        .get(`https://shop-smart-backend.herokuapp.com/${data}`)
         .then((response) => {
           console.log("Inside getSearchDataFromAPI Function");
-          const newProducts = response.data;
-          setProducts(newProducts);
+          const searchProducts = response.data;
+          console.log(searchProducts);
+          setProducts(searchProducts);
           setSearchInput(data);
-          console.log(newProducts);
+          console.log(products);
         })
         .catch((error) => console.log(`Cannot get the data ${error}`));
     }
@@ -50,7 +50,7 @@ function App() {
   const getOfferResultFromAPI = (data) => {
     if (data) {
       axios
-        .get(`http://localhost:5000/offers/${data}`)
+        .get(`https://shop-smart-backend.herokuapp.com/offers/${data}`)
         .then((response) => {
           console.log("Inside getOfferResultFromAPI Function");
           const offers = response.data;
@@ -68,7 +68,7 @@ function App() {
   const saveProductToWatchlist = (data) => {
     if (data) {
       axios
-        .post("http://localhost:5000/watchlist", data)
+        .post("https://shop-smart-backend.herokuapp.com/watchlist", data)
         .then((response) => {
           console.log("Successfully added the item to our watchlist");
           console.log(response);
@@ -84,6 +84,7 @@ function App() {
       <Header
         getSearchDataFromAPI={getSearchDataFromAPI}
         searchInput={searchInput}
+        products={products}
       />
       <main>
         <Routes>

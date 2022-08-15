@@ -35,15 +35,20 @@ const Discover = ({
   return (
     chosenProduct.title && (
       <>
-        <h5 className="chosenProduct_title">{chosenProduct.title}</h5>
-        <button
-          type="button"
-          class="btn btn-success"
-          title="Solid"
-          onClick={handleProductWatch}
-        >
-          Watch Price For This Product
-        </button>
+        <div class="container">
+          <div class="row align-items-center">
+            <h5 class="col">{chosenProduct.title}</h5>
+            <button
+              type="button"
+              class="btn btn-success col"
+              title="Solid"
+              onClick={handleProductWatch}
+            >
+              Watch Price For This Product
+            </button>
+          </div>
+        </div>
+
         <div className="chosenProduct_display">
           <img
             alt=""
@@ -52,6 +57,7 @@ const Discover = ({
           />
         </div>
         <h6 className="chosenProduct_price">{chosenProduct.price}</h6>
+        <a href={chosenProduct.url}>Visit this product on Amazon</a>
         <button
           type="button"
           class="btn btn-secondary"
@@ -66,3 +72,35 @@ const Discover = ({
 };
 
 export default Discover;
+
+//  (
+//     chosenProduct.title && (
+//       <>
+//         <h5 className="chosenProduct_title">{chosenProduct.title}</h5>
+//         <button
+//           type="button"
+//           class="btn btn-success"
+//           title="Solid"
+//           onClick={handleProductWatch}
+//         >
+//           Watch Price For This Product
+//         </button>
+//         <div className="chosenProduct_display">
+//           <img
+//             alt=""
+//             src={chosenProduct.image}
+//             className="chosenProduct_image"
+//           />
+//         </div>
+//         <h6 className="chosenProduct_price">{chosenProduct.price}</h6>
+//         <button
+//           type="button"
+//           class="btn btn-secondary"
+//           onClick={handleProductOffers}
+//         >
+//           Check Other Offers
+//         </button>
+//         <OffersList chosenProductOffers={chosenProductOffers} />
+//       </>
+//     )
+//   );
