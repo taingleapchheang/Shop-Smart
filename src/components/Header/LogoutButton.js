@@ -11,7 +11,9 @@ const LogoutButton = () => {
       class="btn btn-primary btn-lg"
       onClick={() =>
         logout({
-          returnTo: window.location.origin,
+          returnTo: {
+            targetUrl: "https://taingleapchheang.github.io/Shop-Smart/",
+          },
         })
       }
     >

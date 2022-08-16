@@ -11,7 +11,9 @@ const LoginButton = () => {
       class="btn btn-primary btn-lg"
       onClick={() =>
         loginWithRedirect({
-          returnTo: window.location.origin,
+          returnTo: {
+            targetUrl: "https://taingleapchheang.github.io/Shop-Smart/",
+          },
         })
       }
     >
