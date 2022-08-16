@@ -4,7 +4,7 @@ import "./Header.css";
 import Search from "./Search";
 import NavBar from "./NavBar";
 
-const Header = ({ getSearchDataFromAPI, searchInput, products }) => {
+const Header = ({ getSearchDataFromAPI, searchInput}) => {
   return (
     <>
       <Head />
@@ -15,7 +15,6 @@ const Header = ({ getSearchDataFromAPI, searchInput, products }) => {
       <NavBar
         getSearchDataFromAPI={getSearchDataFromAPI}
         searchInput={searchInput}
-        products={products}
       />
     </>
   );

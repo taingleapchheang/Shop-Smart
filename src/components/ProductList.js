@@ -11,7 +11,12 @@ const ProductList = ({
 }) => {
   const [sortOption, setSortOption] = useState("byLowToHigh");
   const productListJSXSortByLowToHigh = products
-    .sort((a, b) => a.price.value - b.price.value)
+    .sort((a, b) => {
+      if (!a?.price?.value || !b?.price?.value) {
+        return 0;
+      }
+      return a.price.value - b.price.value;
+    })
     .map((product, index) => (
       <Product
         key={index}

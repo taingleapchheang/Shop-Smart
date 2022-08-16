@@ -5,12 +5,12 @@ import axios from "axios";
 import { BrowserRouter as Switch, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import OfficialPage from "./components/views/OfficialPage";
 import ProductPage from "./components/views/ProductPage";
 import AccountPage from "./components/views/AccountPage";
 import Discover from "./components/views/DiscoverPage";
 import SampleData from "./components/SampleData";
 import SampleOfferData from "./components/SampleOfferData";
+import Home from "./components/views/Home";
 
 const defaultChosenProduct = {
   title: null,
@@ -39,7 +39,7 @@ function App() {
           console.log("Inside getSearchDataFromAPI Function");
           const searchProducts = response.data;
           console.log(searchProducts);
-          setProducts(searchProducts);
+          setProducts(searchProducts.filter((e) => !!e?.price?.value));
           setSearchInput(data);
           console.log(products);
         })
@@ -84,11 +84,10 @@ function App() {
       <Header
         getSearchDataFromAPI={getSearchDataFromAPI}
         searchInput={searchInput}
-        products={products}
       />
-      <main>
+      <main className="body-setup">
         <Routes>
-          <Route path="/" element={<OfficialPage />} />
+          <Route path="/" element={<Home />} />
           <Route
             path="/products"
             element={

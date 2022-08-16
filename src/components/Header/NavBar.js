@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useEffect } from "react";
 import { BrowserRouter as Switch, Routes, Route, Link } from "react-router-dom";
@@ -13,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { navigate } from "@reach/router";
 import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 
-const NavBar = ({ getSearchDataFromAPI, searchInput, products }) => {
+const NavBar = ({ getSearchDataFromAPI, searchInput }) => {
   const { isAuthenticated } = useAuth0();
 
   const handleSelectedCategory = (e) => {
@@ -25,14 +24,6 @@ const NavBar = ({ getSearchDataFromAPI, searchInput, products }) => {
     getSearchDataFromAPI(searchInput);
     navigate("/products");
     console.log("Navigating to product route");
-
-    // const getSearchResults = async () => {
-    //   console.log("Inside Async Call");
-    //   getSearchDataFromAPI(searchInput);
-    //   console.log("Navigating to product route");
-    // };
-    // getSearchResults();
-    // navigate("/products");
   };
 
   return (

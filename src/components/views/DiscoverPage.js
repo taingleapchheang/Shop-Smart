@@ -48,7 +48,6 @@ const Discover = ({
             </button>
           </div>
         </div>
-
         <div className="chosenProduct_display">
           <img
             alt=""
@@ -57,7 +56,7 @@ const Discover = ({
           />
         </div>
         <h6 className="chosenProduct_price">{chosenProduct.price}</h6>
-        <a href={chosenProduct.url}>Visit this product on Amazon</a>
+        <a href={chosenProduct.url}>Find this product on Amazon</a>
         <button
           type="button"
           class="btn btn-secondary"
