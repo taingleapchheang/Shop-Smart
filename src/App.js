@@ -24,7 +24,7 @@ const defaultChosenProduct = {
 const defaultUserEmail = { email: null };
 
 function App() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(SampleData);
   const [chosenProductOffers, setChosenProductOffers] = useState([]);
   const [chosenProduct, setChosenProduct] = useState(defaultChosenProduct);
   const [userInfo, setUserInfo] = useState(defaultUserEmail);
@@ -87,7 +87,7 @@ function App() {
         products={products}
         chosenProduct={chosenProduct}
       />
-      <main className="body-setup">
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route

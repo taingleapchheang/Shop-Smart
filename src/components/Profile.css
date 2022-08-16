@@ -1,0 +1,23 @@
+.container {
+    background-blend-mode: multiply;
+    background-color: #fff;
+    transition: all 0.3s 0s ease;
+    min-height: 75vh;
+    height: fit-content;
+}
+
+.item {
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #825313;
+  font-size: 26px; 
+  padding: 5px;
+  margin: 1em;
+}
+
+.user-name {
+  font-size: 32px;
+  color: #59596d;
+  margin-top: 50px;
+  padding: 5px;
+}

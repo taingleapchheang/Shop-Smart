@@ -4,8 +4,8 @@ import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="official-page">
-      <img src={Background} alt="" className="background-logo" />
+    <div class="official-page">
+      <img src={Background} alt="" class="background-logo" />
     </div>
   );
 };
