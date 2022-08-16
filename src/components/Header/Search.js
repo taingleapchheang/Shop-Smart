@@ -50,29 +50,3 @@ const Search = (props) => {
 };
 
 export default Search;
-
-{
-  /* <ul class="nav nav-pills nav-fill">
-<li class="nav-item">
-  <img src={logo} class="d-inline-block align-top img" alt="" />
-</li>
-<li class="nav-item">
-  <form onSubmit={getSearchData} class="form-inline my-2 my-lg-0">
-    <input
-      name="message"
-      type="search"
-      value={search.message}
-      onChange={handleUserInput}
-      placeholder="search products"
-      required
-      class="form-control mr-sm-2 me-2"
-      aria-label="Search"
-      id="user-input"
-    />
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-      Search
-    </button>
-  </form>
-</li>
-</ul> */
-}

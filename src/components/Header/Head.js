@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 const Head = () => {
   return (
     <>
-      <section className="head">
+      <section class="head">
         <div>
           <ul class="nav nav-pills nav-fill">
             <li class="nav-item">

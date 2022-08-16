@@ -1,7 +1,7 @@
 import React from "react";
-import OffersList from "../OffersList";
+import OffersList from "../Contents/OffersList";
 import { useNavigate } from "react-router-dom";
-import Discover from "../Discover";
+import Discover from "../Contents/Discover";
 import Background from "./Background.jpeg";
 
 const DiscoverPage = ({
@@ -19,6 +19,7 @@ const DiscoverPage = ({
           chosenProductOffers={chosenProductOffers}
           getOfferResultFromAPI={getOfferResultFromAPI}
           saveProductToWatchlist={saveProductToWatchlist}
+          userInfo={userInfo}
         />
       ) : (
         <img src={Background} alt="" className="background-logo" />

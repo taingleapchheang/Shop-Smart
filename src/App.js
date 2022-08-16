@@ -5,12 +5,12 @@ import axios from "axios";
 import { BrowserRouter as Switch, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import ProductPage from "./components/views/ProductPage";
-import AccountPage from "./components/views/AccountPage";
-import Discover from "./components/views/DiscoverPage";
+import ProductPage from "./components/Views/ProductPage";
+import AccountPage from "./components/Views/AccountPage";
+import Discover from "./components/Views/DiscoverPage";
 import SampleData from "./components/SampleData";
 import SampleOfferData from "./components/SampleOfferData";
-import Home from "./components/views/Home";
+import Home from "./components/Views/Home";
 
 const defaultChosenProduct = {
   title: null,
@@ -66,17 +66,15 @@ function App() {
   };
 
   const saveProductToWatchlist = (data) => {
-    if (data) {
-      axios
-        .post("https://shop-smart-backend.herokuapp.com/watchlist", data)
-        .then((response) => {
-          console.log("Successfully added the item to our watchlist");
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(`Unable to add item to watchlist ${error}`);
-        });
-    }
+    axios
+      .post("https://shop-smart-backend.herokuapp.com/watchlist", data)
+      .then((response) => {
+        console.log("Successfully added the item to our watchlist");
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(`Unable to add item to watchlist ${error}`);
+      });
   };
 
   return (

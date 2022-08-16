@@ -1,12 +1,11 @@
 import React from "react";
-import { Container } from "react-bootstrap";
-import Profile from "../Profile";
+import Profile from "../Contents/Profile";
 
 const AccountPage = ({ userInfo }) => {
   return (
-    <Container>
-      <Profile userInfo={userInfo} />
-    </Container>
+    <>
+      <Profile userInfo={userInfo}/>
+    </>
   );
 };
 

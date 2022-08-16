@@ -1,21 +1,17 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import JSONPretty from "react-json-pretty";
-import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Profile.css";
 
 const Profile = ({ userInfo }) => {
   const { user, isAuthenticated } = useAuth0();
-  const navigate = useNavigate();
   if (isAuthenticated === true) {
-    navigate("/account");
+    userInfo.email = user.email;
   }
-  userInfo.email = user.email;
   return (
     <div class="container">
       <div class="item user-name">
-        {" "}
         <strong> Hi {user.name} !</strong>
       </div>
       <div class="item ">

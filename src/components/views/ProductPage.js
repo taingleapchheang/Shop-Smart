@@ -1,5 +1,5 @@
 import React from "react";
-import ProductList from "../ProductList";
+import ProductList from "../Contents/ProductList";
 import { useEffect } from "react";
 import Background from "./Background.jpeg";
 

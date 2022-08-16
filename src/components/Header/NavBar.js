@@ -1,16 +1,12 @@
 import React from "react";
-import { useEffect } from "react";
 import { BrowserRouter as Switch, Routes, Route, Link } from "react-router-dom";
 import { NavLink as RouterNavLink } from "react-router-dom";
-import { Navigate, Redirect } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import "bootstrap/dist/css/bootstrap.css";
 import { useNavigate } from "react-router-dom";
-import { navigate } from "@reach/router";
-import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 
 const NavBar = ({
   getSearchDataFromAPI,
@@ -19,6 +15,7 @@ const NavBar = ({
   chosenProduct,
 }) => {
   const { isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
 
   const handleSelectedCategory = (e) => {
     e.preventDefault();

@@ -12,8 +12,11 @@ const Discover = ({
   const navigate = useNavigate();
 
   const handleProductWatch = () => {
-    if (userInfo.email === null) {
+    console.log("clicking watch");
+    console.log(userInfo);
+    if (!userInfo.email) {
       alert("You must log in to do the price watchlist");
+      console.log("User Email is null");
       navigate("/account");
     } else {
       const product = {
@@ -23,6 +26,7 @@ const Discover = ({
         url: chosenProduct.url,
         users: [userInfo.email],
       };
+      console.log("Adding the item to watchlist");
       saveProductToWatchlist(product);
       console.log(product);
       alert("This product has been added to our watchlist");
