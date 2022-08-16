@@ -113,12 +113,11 @@ function App() {
               />
             }
           />
-          {isAuthenticated && (
-            <Route
-              path="/account"
-              element={<AccountPage userInfo={userInfo} />}
-            />
-          )}
+          <Route
+            path="/account"
+            element={<AccountPage userInfo={userInfo} />}
+          />
+          )
         </Routes>
       </main>
       <Footer />
