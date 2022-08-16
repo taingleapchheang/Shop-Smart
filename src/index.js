@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import Auth0ProviderWithHistory from "./Auth0ProviderWithHistory";
+import 'regenerator-runtime/runtime';
+import axios from 'axios';
 
 ReactDOM.render(
   <BrowserRouter>
