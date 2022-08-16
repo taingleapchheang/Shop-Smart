@@ -1,6 +1,8 @@
 import React from "react";
 import OffersList from "./OffersList";
 import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
+import "./Discover.css";
 
 const Discover = ({
   chosenProduct,
@@ -15,7 +17,9 @@ const Discover = ({
     console.log("clicking watch");
     console.log(userInfo);
     if (!userInfo.email) {
-      alert("You must log in to do the price watchlist");
+      alert(
+        "Please log in first. We can't do the price watch without your email"
+      );
       console.log("User Email is null");
       navigate("/account");
     } else {
@@ -39,8 +43,8 @@ const Discover = ({
   return (
     <>
       <div class="container">
-        <div class="row align-items-center">
-          <h5 class="col">{chosenProduct.title}</h5>
+        <div class="row">
+          <h5 class="col-9">{chosenProduct.title}</h5>
           <button
             type="button"
             class="btn btn-warning col"
@@ -50,11 +54,65 @@ const Discover = ({
             Watch Price For This Product
           </button>
         </div>
-      </div>
 
-      <div className="chosenProduct_display">
-        <img alt="" src={chosenProduct.image} className="chosenProduct_image" />
+        <div class="row align-items-center">
+          <div class="col-9">
+            <img
+              alt=""
+              src={chosenProduct.image}
+              className="chosenProduct_image"
+            />
+          </div>
+          <div class="col">
+            <h6 className="chosenProduct_price">{chosenProduct.price}</h6>
+            <a href={chosenProduct.url} >
+              Visit this product on Amazon
+            </a>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-md-auto align-items-center">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onClick={handleProductOffers}
+              >
+                Check Other Offers
+              </button>
+              <OffersList chosenProductOffers={chosenProductOffers} />
+            </div>
+          </div>
+        </div>
       </div>
+    </>
+  );
+};
+
+export default Discover;
+
+{
+  /* <>
+<div class="container">
+  <div class="row align-items-center">
+    <h5 class="col">{chosenProduct.title}</h5>
+    <button
+      type="button"
+      class="btn btn-warning col"
+      title="Solid"
+      onClick={handleProductWatch}
+    >
+      Watch Price For This Product
+    </button>
+  </div>
+
+  <div class="row align-items-center">
+    <div class="col">
+      <img
+        alt=""
+        src={chosenProduct.image}
+        className="chosenProduct_image"
+      />
+    </div>
+    <div class="col">
       <h6 className="chosenProduct_price">{chosenProduct.price}</h6>
       <a href={chosenProduct.url}>Visit this product on Amazon</a>
       <button
@@ -64,9 +122,12 @@ const Discover = ({
       >
         Check Other Offers
       </button>
-      <OffersList chosenProductOffers={chosenProductOffers} />
-    </>
-  );
-};
+    </div>
 
-export default Discover;
+    <div class="col">
+      <OffersList chosenProductOffers={chosenProductOffers} />
+    </div>
+  </div>
+</div>
+</> */
+}

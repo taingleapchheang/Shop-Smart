@@ -1,4 +1,4 @@
-.container {
+.profile-container {
     background-blend-mode: multiply;
     background-color: #fff;
     transition: all 0.3s 0s ease;
@@ -8,7 +8,7 @@
 
 .item {
   width: -moz-fit-content;
-  width: fit-content;
+  justify-content: center;
   color: #825313;
   font-size: 26px; 
   padding: 5px;
@@ -16,6 +16,7 @@
 }
 
 .user-name {
+  align-items: center;
   font-size: 32px;
   color: #59596d;
   margin-top: 50px;

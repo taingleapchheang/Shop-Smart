@@ -1,6 +1,4 @@
 import React from "react";
-import OffersList from "../Contents/OffersList";
-import { useNavigate } from "react-router-dom";
 import Discover from "../Contents/Discover";
 import Background from "./Background.jpeg";
 

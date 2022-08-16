@@ -24,7 +24,7 @@ const defaultChosenProduct = {
 const defaultUserEmail = { email: null };
 
 function App() {
-  const [products, setProducts] = useState(SampleData);
+  const [products, setProducts] = useState([]);
   const [chosenProductOffers, setChosenProductOffers] = useState([]);
   const [chosenProduct, setChosenProduct] = useState(defaultChosenProduct);
   const [userInfo, setUserInfo] = useState(defaultUserEmail);
@@ -66,15 +66,17 @@ function App() {
   };
 
   const saveProductToWatchlist = (data) => {
-    axios
-      .post("https://shop-smart-backend.herokuapp.com/watchlist", data)
-      .then((response) => {
-        console.log("Successfully added the item to our watchlist");
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(`Unable to add item to watchlist ${error}`);
-      });
+    if (data) {
+      axios
+        .post("https://shop-smart-backend.herokuapp.com/watchlist", data)
+        .then((response) => {
+          console.log("Successfully added the item to our watchlist");
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(`Unable to add item to watchlist ${error}`);
+        });
+    }
   };
 
   return (

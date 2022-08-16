@@ -40,6 +40,14 @@ const OffersList = ({ chosenProductOffers }) => {
     }
   };
 
+  const renderOfferCounts = () => {
+    if (chosenProductOffers.length > 1) {
+      return `${chosenProductOffers.length} Offers`;
+    } else if (chosenProductOffers.length === 1) {
+      return `1 Offer`;
+    }
+  };
+
   return (
     chosenProductOffers.length !== 0 && (
       <div>
@@ -51,16 +59,10 @@ const OffersList = ({ chosenProductOffers }) => {
           <option value="byLowToHigh">Sort by Price: Low to High</option>
           <option value="byHighToLow">Sort by Price: High to Low</option>
         </select>
-        <h4> {chosenProductOffers.length} Offers</h4>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">PRODUCT CONDITION</li>
-            <li class="nav-item">PRICE</li>
-            <li class="nav-item">DELIVERY</li>
-            <li class="nav-item">LINK</li>
-          </ul>
-        </div>
-        <div className="offers-list">{renderProducts()}</div>
+        <h4> {renderOfferCounts()}</h4>
+        <ul list-group list-group-numbered>
+          {renderProducts()}
+        </ul>
       </div>
     )
   );
