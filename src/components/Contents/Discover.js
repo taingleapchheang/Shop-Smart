@@ -47,7 +47,7 @@ const Discover = ({
           <h5 class="col-9">{chosenProduct.title}</h5>
           <button
             type="button"
-            class="btn btn-warning col"
+            class="btn btn-warning col watched"
             title="Solid"
             onClick={handleProductWatch}
           >
@@ -64,16 +64,16 @@ const Discover = ({
             />
           </div>
           <div class="col">
-            <h6 className="chosenProduct_price">{chosenProduct.price}</h6>
-            <a href={chosenProduct.url} >
-              Visit this product on Amazon
-            </a>
+            <p class="chosenProduct-price">
+              <strong>{chosenProduct.price}</strong>
+            </p>
+            <a href={chosenProduct.url} class="amazon-link">Visit this product on Amazon</a>
           </div>
           <div class="row align-items-center">
             <div class="col-md-auto align-items-center">
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn btn-secondary offers"
                 onClick={handleProductOffers}
               >
                 Check Other Offers

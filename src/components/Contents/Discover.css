@@ -18,3 +18,40 @@
   background-color: #fff;
   transition: all 0.3s 0s ease;
 }
+
+.chosenProduct-price {
+  font-size: 30px;
+}
+
+.amazon-link:link{
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.amazon-link:clicked {
+  background-color: aquamarine;
+}
+
+.amazon-link:hover, .amazon-link:active {
+  background-color: rgb(243, 215, 215);
+}
+
+.watched:visited {
+  background-color: coral;
+}
+
+.watched:hover {
+  background-color: rgb(243, 215, 215);
+}
+
+.offers:visited {
+  background-color: coral;
+}
+
+.offers:hover {
+  background-color: rgb(243, 215, 215);
+}
