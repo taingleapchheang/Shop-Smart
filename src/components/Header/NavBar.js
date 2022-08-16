@@ -12,7 +12,12 @@ import { useNavigate } from "react-router-dom";
 import { navigate } from "@reach/router";
 import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 
-const NavBar = ({ getSearchDataFromAPI, searchInput }) => {
+const NavBar = ({
+  getSearchDataFromAPI,
+  searchInput,
+  products,
+  chosenProduct,
+}) => {
   const { isAuthenticated } = useAuth0();
 
   const handleSelectedCategory = (e) => {
@@ -156,7 +161,7 @@ const NavBar = ({ getSearchDataFromAPI, searchInput }) => {
           </Nav.Link>
           <Nav.Link as={RouterNavLink} to="/discover" exact class="nav-link ">
             Discover
-          </Nav.Link>{" "}
+          </Nav.Link>
           {isAuthenticated && (
             <Nav.Link as={RouterNavLink} to="/account" exact class="nav-link">
               Account

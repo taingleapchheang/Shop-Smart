@@ -65,7 +65,7 @@ const ProductList = ({
       <div class="container">
         <div class="row align-items-center">
           <div class="col">
-            <h4>Search Results for {searchInput}</h4>
+            <h4>Search Results for "{searchInput}"</h4>
             <h5>{products.length} product results</h5>
           </div>
           <div class="col">

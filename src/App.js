@@ -84,6 +84,8 @@ function App() {
       <Header
         getSearchDataFromAPI={getSearchDataFromAPI}
         searchInput={searchInput}
+        products={products}
+        chosenProduct={chosenProduct}
       />
       <main className="body-setup">
         <Routes>

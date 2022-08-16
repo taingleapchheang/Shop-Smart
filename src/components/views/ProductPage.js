@@ -1,6 +1,7 @@
 import React from "react";
 import ProductList from "../ProductList";
 import { useEffect } from "react";
+import Background from "./Background.jpeg";
 
 const ProductPage = ({
   products,
@@ -8,15 +9,18 @@ const ProductPage = ({
   handleChosenProduct,
   searchInput,
 }) => {
-
   return (
     <div className="product-page">
-      <ProductList
-        products={products}
-        chosenProduct={chosenProduct}
-        handleChosenProduct={handleChosenProduct}
-        searchInput={searchInput}
-      />
+      {products.length ? (
+        <ProductList
+          products={products}
+          chosenProduct={chosenProduct}
+          handleChosenProduct={handleChosenProduct}
+          searchInput={searchInput}
+        />
+      ) : (
+        <img src={Background} alt="" className="background-logo" />
+      )}
     </div>
   );
 };
